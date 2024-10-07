@@ -15,7 +15,8 @@ export default function Header() {
     "scalable",
   ];
   return (
-    <header className="h-screen w-screen mx-auto bg-dark-primary relative overflow-hidden bg-square_bg">
+    <header className="h-screen w-full mx-auto bg-dark-primary relative overflow-hidden bg-square_bg">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-dark-primary"></div>
       <img
         src={PurpleWave}
         alt="purple_wave"
@@ -24,7 +25,7 @@ export default function Header() {
         className="absolute blur-3xl top-[-12rem] right-[-10rem]"
       />
 
-      <div className="w-full flex h-full items-center justify-evenly">
+      <div className="w-full flex flex-col md:flex-row h-full items-center justify-evenly transition-all">
         <motion.h1
           initial={{ translateX: -100 }}
           animate={{ translateX: 0 }}
@@ -33,11 +34,11 @@ export default function Header() {
             stiffness: 260,
             damping: 28,
           }}
-          className="text-8xl font-extrabold text-white w-1/3 text-center"
+          className="text-8xl font-extrabold text-white w-full md:w-1/3 text-center"
         >
           Hi!, Im <span className="text-purple-primary">Daniel</span>
         </motion.h1>
-        <LostRobotViewer className="!w-1/3" />
+        <LostRobotViewer className="w-full md:!w-1/3" />
         <motion.span
           initial={{ translateX: 100 }}
           animate={{ translateX: 0 }}
@@ -46,7 +47,7 @@ export default function Header() {
             stiffness: 260,
             damping: 28,
           }}
-          className="bg-gradient-to-r from-violet-700 to-purple-400 bg-clip-text text-transparent w-1/3 text-7xl font-extrabold flex flex-col items-center"
+          className="bg-gradient-to-r from-violet-700 to-purple-400 bg-clip-text text-transparent w-full md:w-1/3 text-7xl font-extrabold flex flex-col items-center"
         >
           Design
           <FlipWords words={words} className="text-white" />

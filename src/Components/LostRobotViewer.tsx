@@ -23,9 +23,9 @@ function SpheronModel() {
       />
       <directionalLight
         ref={directionalLightRef}
-        position={[-5, -50, 50]}
-        intensity={4000 * 120}
-        color={"red"}
+        position={[-5, -25, 25]}
+        intensity={4000 * 1000}
+        color={"#1C0B3F"}
       />
       <directionalLight
         ref={directionalLightRef}
