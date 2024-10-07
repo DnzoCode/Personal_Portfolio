@@ -1,18 +1,37 @@
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { cn } from "../util/class-merge.utility";
 
 function SpheronModel() {
+  const modelRef = useRef<any>();
+  const directionalLightRef = useRef<any>();
   const lostRobot = useGLTF("./Glb_Models/spheron.glb");
-
+  useFrame(() => {
+    modelRef.current.rotation.y += 0.01; // Rotación
+    modelRef.current.rotation.x += 0.001; // Rotación
+    directionalLightRef.current.rotation.y += 0.01;
+    directionalLightRef.current.rotation.x += 0.001;
+  });
   return (
-    <mesh>
+    <mesh ref={modelRef}>
       <primitive
         object={lostRobot.scene}
         scale={2}
         position={[0, 0, 0]}
         rotation={[0, Math.PI * 0.09, 0]}
+      />
+      <directionalLight
+        ref={directionalLightRef}
+        position={[-5, -50, 50]}
+        intensity={4000 * 120}
+        color={"red"}
+      />
+      <directionalLight
+        ref={directionalLightRef}
+        position={[5, 25, -25]}
+        intensity={4000 * 12}
+        color="#A047F9"
       />
     </mesh>
   );
@@ -28,16 +47,6 @@ function LostRobotViewer({ className }: { className?: string }) {
       {/* Suspense se usa para manejar la carga del modelo */}
       <Suspense fallback={null}>
         <ambientLight intensity={1.4} />
-        <directionalLight
-          position={[-5, -50, 50]}
-          intensity={4000 * 120}
-          color={"red"}
-        />
-        <directionalLight
-          position={[5, 25, -25]} // Posición de la luz
-          intensity={4000 * 12} // Intensidad de la luz
-          color="#A047F9" // Color azul
-        />
         <SpheronModel />
         <OrbitControls enableZoom={false} />
       </Suspense>
