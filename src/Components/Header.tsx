@@ -80,7 +80,7 @@ export default function Header() {
           }}
           className="text-8xl font-extrabold text-white w-full md:w-1/3 text-center"
         >
-          Hi!, Im <span className="text-purple-primary">Daniel</span>
+          Hi!, Im <span className="text-purple-primary">Daniel ;)</span>
         </motion.h1>
 
         <LostRobotViewer className="w-full md:!w-1/3" />

@@ -5,7 +5,7 @@ import BlurryGradient from "/blurry-gradient.svg";
 function App() {
   return (
     <>
-      <main className="h-screen relative">
+      <main className="h-screen relative antialiased">
         <Header />
         <img
           src={BlurryGradient}
