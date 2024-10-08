@@ -1,25 +1,24 @@
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { TextHoverEffect } from "./ui/text-hover-effect";
 import { useRef } from "react";
-import { useParallax } from "../hooks/parallax";
+
 export default function AboutMe() {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
   });
-  console.log(scrollYProgress);
+  const x = useTransform(scrollYProgress, [0, 1], ["-100vw", "0vw"]);
+  const spingX = useSpring(x);
   return (
-    <motion.section
-      className="bg-dark-primary w-full h-[200vh] transition"
-      ref={ref}
-    >
-      <div className="w-full h-full text-center flex flex-col items-center justify-start relative">
-        <div className="w-full sticky top-0">
-          <TextHoverEffect text="I AM" />
+    <motion.section className="bg-dark-primary w-full h-[300vh] transition">
+      <motion.div className="w-full h-full text-center flex flex-col items-center justify-start relative">
+        <div className="h-[200vh] w-full " ref={ref}>
+          <div className="w-full sticky top-1">
+            <TextHoverEffect text="I AM" />
+          </div>
         </div>
-        <motion.div className="text-whte text-2xl bg-white">Holaaa</motion.div>
-      </div>
+        <div className="h-screen w-full bg-red-300"></div>
+      </motion.div>
     </motion.section>
   );
 }
