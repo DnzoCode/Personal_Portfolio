@@ -1,0 +1,30 @@
+{
+    "personal_info": {
+       "soft_skills": [
+          {
+            "title": "Communication",
+            "description": "Ability to clearly convey information and ideas to technical and non-technical stakeholders."
+          },
+          {
+            "title": "Problem-solving",
+            "description": "Skilled at identifying and analyzing issues to develop creative and effective solutions."
+          },
+          {
+            "title": "Teamwork",
+            "description": "Experienced in collaborating with cross-functional teams to achieve project goals efficiently."
+          },
+          {
+            "title": "Adaptability",
+            "description": "Capable of adjusting to new challenges, tools, and technologies in fast-paced environments."
+          },
+          {
+            "title": "Time Management",
+            "description": "Efficient in prioritizing tasks and managing multiple projects to meet deadlines."
+          },
+          {
+            "title": "Leadership",
+            "description": "Able to take initiative and lead teams towards achieving common goals, while mentoring junior developers."
+          }
+       ] 
+    }
+}

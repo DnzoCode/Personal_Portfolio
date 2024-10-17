@@ -8,7 +8,7 @@ import {
 import { TextHoverEffect } from "./ui/text-hover-effect";
 import React, { useRef } from "react";
 import { cn } from "../util/class-merge.utility";
-import { BackgroundBeams } from "./ui/background-beams";
+import PersonalInfo from "./PersonalInfo";
 
 type InfoCardProps = {
   children: React.ReactNode;
@@ -51,8 +51,8 @@ export default function AboutMe() {
   return (
     <motion.section className="bg-dark-primary w-full h-[400vh] transition">
       <motion.div className="w-full h-full text-center flex flex-col items-center justify-start relative">
-        <BackgroundBeams />
-        <div className="h-[300vh] w-full " ref={ref}>
+        {/* <BackgroundBeams /> */}
+        <div className="h-[200vh] w-full " ref={ref}>
           <div className="w-full sticky top-1">
             <TextHoverEffect text="I AM" />
           </div>
@@ -65,9 +65,12 @@ export default function AboutMe() {
                 maxWidth: "45%", // Máximo ancho
                 // opacity: scrollYProgress,
               }}
-              className="flex-1  rounded-r-xl"
+              className="flex-1  rounded-r-xl "
             >
-              <InfoCard children={<></>} className="rounded-r-xl" />
+              <InfoCard
+                children={<PersonalInfo />}
+                className="rounded-r-xl !bg-none bg-opacity-0 "
+              />
             </motion.div>
             <motion.div
               style={{
