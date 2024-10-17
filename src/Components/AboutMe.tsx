@@ -9,6 +9,8 @@ import { TextHoverEffect } from "./ui/text-hover-effect";
 import React, { useRef } from "react";
 import { cn } from "../util/class-merge.utility";
 import PersonalInfo from "./PersonalInfo";
+import Experience from "./Experience";
+import Tecnologies from "./Tecnologies";
 
 type InfoCardProps = {
   children: React.ReactNode;
@@ -82,11 +84,16 @@ export default function AboutMe() {
               }}
               className="flex-1 rounded-r-xl"
             >
-              <InfoCard children={<></>} className="rounded-l-xl" />
+              <InfoCard
+                children={<Tecnologies />}
+                className="rounded-l-xl !bg-none bg-opacity-0 "
+              />
             </motion.div>
           </div>
         </div>
-        <div className="h-screen w-full bg-red-300"></div>
+        <div className="h-[200vh] w-full bg-gradient-to-b  from-transparent to-black">
+          <Experience />
+        </div>
       </motion.div>
     </motion.section>
   );

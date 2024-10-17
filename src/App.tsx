@@ -1,4 +1,5 @@
 import AboutMe from "./Components/AboutMe";
+import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import BlurryGradient from "/blurry-gradient.svg";
 
@@ -15,6 +16,7 @@ function App() {
           className="absolute blur-3xl bottom-[-3rem]"
         />
         <AboutMe />
+        <Footer />
       </main>
     </>
   );
