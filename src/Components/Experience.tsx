@@ -9,7 +9,7 @@ export default function Experience() {
         whileInView={{
           y: 20,
         }}
-        className="text-8xl font-bold  mt-14 bg-gradient-to-r from-violet-950 to-purple-900 bg-clip-text text-transparent"
+        className="text-7xl md:text-8xl font-bold  mt-14 bg-gradient-to-r from-violet-950 to-purple-900 bg-clip-text text-transparent"
       >
         Experience
       </motion.h2>

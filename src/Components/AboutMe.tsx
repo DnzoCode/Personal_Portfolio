@@ -11,6 +11,7 @@ import { cn } from "../util/class-merge.utility";
 import PersonalInfo from "./PersonalInfo";
 import Experience from "./Experience";
 import Tecnologies from "./Tecnologies";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 type InfoCardProps = {
   children: React.ReactNode;
@@ -34,13 +35,31 @@ function InfoCard({ children, style, className }: InfoCardProps) {
 }
 
 export default function AboutMe() {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)"
+  );
+  const isLargeDevice = useMediaQuery(
+    "only screen and (min-width : 993px) and (max-width : 1200px)"
+  );
+  const isExtraLargeDevice = useMediaQuery(
+    "only screen and (min-width : 1201px)"
+  );
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
   });
-  const x = useTransform(scrollYProgress, [0, 0.1], ["-100%", "50%"]);
-  const y = useTransform(scrollYProgress, [0, 0.1], ["50%", "-50%"]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, isSmallDevice ? 0.2 : 0.5],
+    ["-500%", isSmallDevice || isMediumDevice ? "0%" : "50%"]
+  );
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    ["500%", isSmallDevice || isMediumDevice ? "0%" : "-50%"]
+  );
 
   const springX = useSpring(x, {
     stiffness: 100,
@@ -58,16 +77,21 @@ export default function AboutMe() {
           <div className="w-full sticky top-1">
             <TextHoverEffect text="I AM" />
           </div>
-          <div className="flex items-center justify-between w-full sticky top-80 overflow-hidden gap-4">
+          <div className="flex flex-col lg:flex-row items-center justify-between w-full sticky top-80 overflow-hidden gap-4">
             <motion.div
               style={{
                 x: springX,
                 // flexBasis: "30%",
-                minWidth: "150px", // Mínimo ancho
-                maxWidth: "45%", // Máximo ancho
+                minWidth:
+                  isSmallDevice || isMediumDevice
+                    ? "100%"
+                    : isLargeDevice || isExtraLargeDevice
+                    ? "150px"
+                    : "150px", // Mínimo ancho
+                maxWidth: isSmallDevice ? "100%" : "45%", // Máximo ancho
                 // opacity: scrollYProgress,
               }}
-              className="flex-1  rounded-r-xl "
+              className="flex-1 w-full md:min-w-full rounded-r-xl "
             >
               <InfoCard
                 children={<PersonalInfo />}
@@ -78,15 +102,22 @@ export default function AboutMe() {
               style={{
                 x: springY,
                 // flexBasis: "70%",
-                minWidth: "150px", // Mínimo ancho
-                maxWidth: "45%", // Máximo ancho
+                minWidth:
+                  isSmallDevice || isMediumDevice
+                    ? "100%"
+                    : isLargeDevice || isExtraLargeDevice
+                    ? "150px"
+                    : "150px", // Mínimo ancho
+                maxWidth: isSmallDevice ? "100%" : "45%", // Máximo ancho
                 // opacity: scrollYProgress,
               }}
-              className="flex-1 rounded-r-xl"
+              className="flex-1  w-full  rounded-r-xl"
             >
               <InfoCard
                 children={<Tecnologies />}
-                className="rounded-l-xl !bg-none bg-opacity-0 "
+                className={`rounded-l-xl !bg-none bg-opacity-0 ${
+                  isSmallDevice || isMediumDevice ? "!h-auto" : ""
+                }`}
               />
             </motion.div>
           </div>

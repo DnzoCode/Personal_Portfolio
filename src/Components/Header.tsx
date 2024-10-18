@@ -32,8 +32,9 @@ export default function Header() {
       >
         <LuMouse className="text-purple-card text-5xl" />
         <h4 className="bg-gradient-to-b from-violet-700 to-purple-400 bg-clip-text text-transparent font-bold text-center">
-          scroll down <br />
-          <span className="font-extrabold">for the magic</span>
+          scroll down to
+          <br />
+          <span className="font-extrabold">see the magic</span>
         </h4>
       </motion.div>
       <motion.div
@@ -50,12 +51,14 @@ export default function Header() {
           <LinkPreview
             url="https://github.com/DnzoCode"
             className="font-bold text-white"
+            aria="Navigate to Githbu"
           >
             <FaGithub className="cursor-pointer" />
           </LinkPreview>
           <LinkPreview
             url="https://www.linkedin.com/in/daniel-rodriguez-40514a263"
             className="font-bold text-white"
+            aria="Navigate to Linkedin"
           >
             <CiLinkedin className="cursor-pointer" />
           </LinkPreview>

@@ -17,6 +17,7 @@ type LinkPreviewProps = {
   height?: number;
   quality?: number;
   layout?: string;
+  aria?: string;
 } & (
   | { isStatic: true; imageSrc: string }
   | { isStatic?: false; imageSrc?: never }
@@ -30,6 +31,7 @@ export const LinkPreview = ({
   height = 125,
   isStatic = false,
   imageSrc = "",
+  aria,
 }: LinkPreviewProps) => {
   let src;
   if (!isStatic) {
@@ -89,6 +91,7 @@ export const LinkPreview = ({
           className={cn("text-black dark:text-white", className)}
           href={url}
           target="_blank"
+          aria-label={aria}
         >
           {children}
         </HoverCardPrimitive.Trigger>
@@ -124,6 +127,7 @@ export const LinkPreview = ({
                   className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
                   style={{ fontSize: 0 }}
                   target="_blank"
+                  aria-label={aria}
                 >
                   <img
                     src={isStatic ? imageSrc : src}
