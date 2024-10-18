@@ -10,7 +10,7 @@ export default function PersonalInfo() {
     <div className="w-full h-full flex items-center justify-between">
       <div className="h-full w-16 flex items-center justify-center px-4 text-nowrap">
         <h3
-          className="text-6xl bg-gradient-to-r from-violet-500 to-purple-400 bg-clip-text text-transparent text-cneter rotate-180 font-extrabold "
+          className="text-6xl bg-gradient-to-r from-violet-500 to-purple-400 bg-clip-text text-transparent text-center rotate-180 font-extrabold "
           style={{
             writingMode: "vertical-rl",
           }}
